@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/results.css">
+    <title>Search Results</title>
+</head>
+<body>
+<h2>Search Results</h2>
+
+<div th:if="${vehicles.empty}">
+    <p>No results found.</p>
+</div>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Poczatek Produkcji</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car : ${vehicles}">
+        <td th:text="${car.marka}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.poczatekProdukcji}"></td>
+        <td>
+            <form th:action="@{/cars/delete/{id}(id=${car.id})}" method="post" onsubmit="return confirm('Czy napewno chcesz usunąć ten samochód z katalogu?')">
+                <button type="submit">Usuń</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        <li th:if="${currentPage > 0}"><a th:href="@{/cars/search?page=0}">First</a></li>
+        <li th:if="${currentPage > 0}"><a th:href="@{/cars/search?page=__${currentPage - 1}__}">Previous</a></li>
+
+        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:href="@{/cars/search?page=__${i}__}" th:text="${i + 1}"></a>
+        </li>
+
+        <li th:if="${currentPage < totalPages - 1}"><a th:href="@{/cars/search?page=__${currentPage + 1}__}">Next</a></li>
+        <li th:if="${currentPage < totalPages - 1}"><a th:href="@{/cars/search?page=__${totalPages - 1}__}">Last</a></li>
+    </ul>
+</div>
+</body>
+</html>

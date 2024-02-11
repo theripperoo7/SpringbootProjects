@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/carAdd.css">
+  <title>Dodawanie Samochodu</title>
+</head>
+<body>
+<h2>Dodawanie Samochodu</h2>
+<form th:action="@{/cars/add}" method="post" th:object="${car}">
+  <label for="marka">Marka:</label>
+  <input type="text" id="marka" name="marka" placeholder="Wprowadź markę" th:field="*{marka}" required />
+  <div th:if="${#fields.hasErrors('marka')}" th:errors="*{marka}"></div>
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" placeholder="Wprowadź model" th:field="*{model}" required />
+  <div th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></div>
+
+  <label for="poczatekProdukcji">Poczatek Produkcji:</label>
+  <input type="text" id="poczatekProdukcji" name="poczatekProdukcji" pattern="[0-9]+" title="Wprowadź liczbę" placeholder="Wprowadź rok produkcji" th:field="*{poczatekProdukcji}" required />
+  <div th:if="${#fields.hasErrors('poczatekProdukcji')}">
+    <span th:each="error : ${#fields.errors('poczatekProdukcji')}" th:text="${error}"></span>
+  </div>
+
+  <button type="submit">Dodaj Samochód</button>
+</form>
+</body>
+</html>

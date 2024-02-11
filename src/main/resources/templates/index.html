@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/glowna.css">
+  <title>Car Search</title>
+</head>
+<body>
+<h1>Katolog i Wyszukiwarka w jednym!</h1>
+
+<form th:action="@{/cars/search}" method="get">
+  <label for="marka">Marka:</label>
+  <input type="text" id="marka" name="marka" />
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" />
+
+  <label for="poczatekProdukcji">Poczatek Produkcji:</label>
+  <input type="text" id="poczatekProdukcji" name="poczatekProdukcji" />
+
+  <button type="submit">Szukaj</button>
+</form>
+
+<a th:href="@{/cars/add}"><button type="button-add-car">Dodaj Samochód</button></a>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  border: 2px solid #3498db;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+
+/* Styl dla przycisków */
+button, button[type="button-add-car"] {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  background-color: #2ecc71;
+}
+
+/* Styl dla formularza */
+form {
+  margin: 20px 0;
+}
+
+/* Styl dla inputów */
+input {
+  width: 250px;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+/* Dodatkowe style */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ecf0f1;
+  color: #333;
+}
+
+h1 {
+  color: #3498db;
+    text-align: center;
+}
